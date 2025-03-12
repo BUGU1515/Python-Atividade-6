@@ -1,0 +1,31 @@
+def validar_numero(valor):
+    try:
+        return float(valor)
+    except ValueError:
+        return False
+
+def soma_digitos(numero):
+    if not numero.isdigit():
+        return "Valor informado não é um número inteiro válido."
+    return sum(int(digito) for digito in numero)
+
+temp_maxima = input("Digite a temperatura máxima do dia: ")
+temp_minima = input("Digite a temperatura mínima do dia: ")
+
+temp_maxima = validar_numero(temp_maxima)
+temp_minima = validar_numero(temp_minima)
+
+if temp_maxima is False or temp_minima is False:
+    print("Valor informado para a temperatura é inválido. Certifique-se de inserir um número válido.")
+else:
+    media = (temp_maxima + temp_minima) / 2
+    variacao = temp_maxima - temp_minima
+    print(f"\nMédia entre as temperaturas: {media:.2f}")
+    print(f"Variação entre as temperaturas: {variacao:.2f}")
+
+numero = input("\nDigite um número para calcular a soma dos dígitos: ")
+
+if numero.replace("-", "").isdigit():
+    print(f"Soma dos dígitos: {soma_digitos(numero)}")
+else:
+    print("Valor informado não é um número inteiro válido.")
